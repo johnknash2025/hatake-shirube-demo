@@ -1,0 +1,73 @@
+{
+  "name": "hatake-shirube-demo",
+  "productName": "Hatake Shirube Demo",
+  "version": "0.1.0-beta.1",
+  "description": "畑しるべ demo: offline desktop app with fictional data",
+  "license": "MIT",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "audit:pii": "node scripts/audit.mjs",
+    "dist": "electron-builder --publish never"
+  },
+  "devDependencies": {
+    "electron": "38.8.6",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "dev.example.hatake-shirube-demo",
+    "files": [
+      "app/**",
+      "electron/**",
+      "package.json"
+    ],
+    "electronLanguages": [
+      "ja",
+      "en"
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "identity": null,
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "category": "Utility"
+    },
+    "artifactName": "hatake-shirube-demo-${version}-${os}-${arch}.${ext}"
+  },
+  "allowScripts": {
+    "electron@38.8.6": true
+  }
+}
